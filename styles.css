@@ -8,7 +8,8 @@ body{
     color:#fff;
     width:100%;
     height:100%;
-line-height:1.5;
+    line-height:1.5;
+    font-family: 'Roboto', Arial;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
@@ -45,7 +46,7 @@ h1{
     place-items:center;
 
     color:#f2f9ff;
-    background:#0073a8;
+    background:#241807;
     border:none;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -59,12 +60,12 @@ background:#3977d4;
     width:200px;
     flex-shrink:0;
     color:#fff;
-    background:#0073a8;
+    background: rgb(40,161,245);
+    background: linear-gradient(0deg, rgba(40,161,245,0.6787856884216994) 0%, rgba(10,46,70,1) 100%);
     box-shadow:0 0 10px rgba(0,0,0,0.3);
     overflow:hidden;
     border-radius: 5px;
-    margin-top:25px;
-    padding-top:10px;
+    margin-top:20px;
     padding-left:25px;
 }
 .sp-icon-close{
@@ -79,6 +80,155 @@ background:#3977d4;
 .side-panel-open .sp-icon-close{
     display:none initial !important;
 }
+#max-results-var{
+  margin-left:60px;
+  width:50px;
+  height:20px;
+  border: none;
+  border-radius:3px;
+  margin-bottom: 14px;
+  margin-top: 5px;
+  outline:none;
+}
+#max-distance-var{
+  margin-left:60px;
+  width:50px;
+  height:20px;
+  border: none;
+  border-radius:3px;
+  margin-bottom: 14px;
+  margin-top: 5px;
+  outline:none;
+}
+#max-results-var:focus{
+  box-shadow:3px 3px 5px rgba(207, 207, 207, 0.3);
+}
+#max-distance-var:focus{
+  box-shadow:3px 3px 5px rgba(207, 207, 207, 0.3);
+}
+.parameters{
+  text-align:center;
+  padding-right:20px;
+  margin-top:20px;
+}
+/* -------------------switch------------------- */
+
+.toggleSwitch {
+    display: inline-block;
+    height: 17px;
+    position: relative;
+    overflow: visible;
+    padding: 0;
+    margin-left: 61px;
+    margin-top: 5px;
+    cursor: pointer;
+    width: 40px;
+    user-select: none;
+    margin-bottom: 12px;
+
+  }
+
+  .toggleSwitch label,
+  .toggleSwitch > span {
+    line-height: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+  .toggleSwitch label {
+    position: relative;
+    z-index: 3;
+    display: block;
+    width: 100%;
+  }
+  .toggleSwitch input:focus ~ a,
+  .toggleSwitch input:focus + label {
+    outline: none;
+  }
+  .toggleSwitch input {
+    position: absolute;
+    opacity: 0;
+    z-index: 5;
+  }
+.toggleSwitch span span {
+  display: none;
+}
+.toggleSwitch > span {
+    position: absolute;
+    left: -50px;
+    width: 0;
+    margin: 0;
+    padding-right: 50px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .toggleSwitch > span span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: block;
+    width: 50%;
+    margin-left: 50px;
+    text-align: left;
+    font-size: 0.8em;
+    width: 100%;
+    left: 15%;
+    top: -1px;
+    opacity: 0;
+  }
+  .toggleSwitch a {
+    position: absolute;
+    right: 50%;
+    z-index: 4;
+    display: block;
+    height: 100%;
+    padding: 0;
+    left: 0px;
+    width: 18px;
+    background-color: #fff;
+    border: 1px solid #CCC;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  .toggleSwitch > span span:first-of-type {
+    color: #ccc;
+    opacity: 1;
+    left: 45%;
+  }
+  .toggleSwitch > span:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50px;
+    top: -2px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+  }
+  .toggleSwitch input:checked ~ a {
+    border-color: #fff;
+    left: 100%;
+    margin-left: -8px;
+  }
+  .toggleSwitch input:checked ~ span:before {
+    border-color: #0097D1;
+    box-shadow: inset 0 0 0 30px #0097D1;
+  }
+  .toggleSwitch input:checked ~ span span:first-of-type {
+    opacity: 0;
+  }
+  .toggleSwitch input:checked ~ span span:last-of-type {
+    opacity: 1;
+    color: #fff;
+  }
 /* -------------------search------------------- */
 .search-form{
     display:flex;
@@ -133,6 +283,9 @@ background:#3977d4;
 #submit-button:hover{
     box-shadow:0 0 0 2px #d0d0d0;
 }
+
+/* -------------------infowindow------------------- */
+
 #info-window-title{
     font-weight:500;
     font-size:14px;

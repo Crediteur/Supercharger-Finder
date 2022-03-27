@@ -15,14 +15,13 @@
 </head>
 
 <body>
-
     <div class="wrapper side-panel-open">
         <div class="main">
             <!-- main content -->
             <h1 id="title">Find My Supercharger</h1>
 
             <form class="search-form">
-                <input id="search-input" type="text" placeholder="Location" autocomplete="off" value="Toronto">
+                <input id="search-input" type="text" placeholder="Location" autocomplete="off" value="Windsor ON">
                 <input id="submit-button" type="submit" value="Search">
             </form>
 
@@ -35,17 +34,17 @@
         </button>
         <div class="side-panel">
             <!-- side panel -->
-            <div>Max Results</div>
+            <div class="parameters">Max Results</div>
             <input id="max-results-var" type="number" placeholder="1-500" autocomplete="off" value="60" min="1"
                 max="500">
 
-            <div>Max Distance</div>
+            <div class="parameters">Max Distance</div>
             <input id="max-distance-var" type="number" placeholder="1-500" autocomplete="off" value="80" min="1"
                 max="500">
 
-            <div>Filter Superchargers</div>
-            <label class="toggleSwitch nolabel" onclick="">
-                <input type="checkbox" checked />
+            <div class="parameters">Filter Superchargers</div>
+            <label class="toggleSwitch filter-superchargers" onclick="">
+                <input id="checkbox-filter" type="checkbox" checked />
                 <span>
                     <span>OFF</span>
                     <span>ON</span>
@@ -53,20 +52,17 @@
                 <a></a>
             </label>
 
-            <div>Filter Superchargers</div>
-            <label class="toggleSwitch nolabel" onclick="">
-                <input type="checkbox" checked />
+            <div class="parameters">Upcoming Superchargers</div>
+            <label class="toggleSwitch upcoming-superchargers" onclick="">
+                <input id="checkbox-upcoming" type="checkbox" />
                 <span>
                     <span>OFF</span>
                     <span>ON</span>
                 </span>
                 <a></a>
             </label>
-
         </div>
     </div>
-
-
     <script src="script.js">//sidepanel testing
     </script>
     <script async defer

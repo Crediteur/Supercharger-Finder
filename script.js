@@ -3,11 +3,13 @@ let geocoder;
 let map;
 let lati = 42.2;
 let long = -82.3;
-let maxresults = 60;
+let maxResults = 60;
 let distance = 80;
+let connectionTypeId = '&connectiontypeid=27,';
+let statusTypeId = '';
 
 function apiURL(lati, long) {
-    return `https://api.openchargemap.io/v3/poi/?&output=json&maxresults=${maxresults}&connectiontypeid=27,&verbose=true&distance=${distance}&latitude=${lati}&longitude=${long}&key=${apikey}`;
+    return `https://api.openchargemap.io/v3/poi/?&output=json&maxresults=${maxResults}${connectionTypeId}&verbose=true&distance=${distance}&latitude=${lati}&longitude=${long}&key=${apikey}${statusTypeId}`;
 }
 
 //fetch openchargemap data once latitde and longitude parameters are set
@@ -37,8 +39,6 @@ function geocode(request) {
             let latit = parseFloat(JSONresult.results[0].geometry.location.lat);
             let longi = parseFloat(JSONresult.results[0].geometry.location.lng);
 
-            console.log(JSONresult.results[0].geometry.location);
-            console.log(latit, longi);
             if (latit !== null && longi != null) {
                 getMapLocation(latit, longi);
             }
@@ -51,20 +51,39 @@ function geocode(request) {
 //listener on click to change dom events
 const submit_button = document.getElementById('submit-button');
 const title = document.getElementById('title');
+const filter = document.getElementById('checkbox-filter');
+const upcoming = document.getElementById('checkbox-upcoming');
+
+//events and filters happening on clicking submit
 submit_button.addEventListener("click", (e) => {
     e.preventDefault();
-
-    const search_input = document.getElementById('search-input').value;
-    //hide title
+    //hide title h1
     title.style.display = "none";
 
-    maxresults = document.getElementById('max-results-var').value;
+    //read values of sidepanel input boxes
+    maxResults = document.getElementById('max-results-var').value;
+    if (maxResults < 1) {
+        maxResults = 1;
+    }
     distance = document.getElementById('max-distance-var').value;
-    //connection type if true, var = "connectiontypeid=27,", else var = "", remember to change icon
-
-
-    console.log(maxresults);
+    if (distance < 1) {
+        distance = 1;
+    }
+    //check boxes for filter and future chargers
+    if (filter.checked) {
+        connectionTypeId = '&connectiontypeid=27,';
+    }
+    else {
+        connectionTypeId = '';
+    }
+    if (upcoming.checked) {
+        statusTypeId = '&statustypeid=150';
+    }
+    else {
+        statusTypeId = '';
+    }
     //read text from input box and call geocode API
+    const search_input = document.getElementById('search-input').value;
     geocode({
         address: search_input
     })
@@ -90,8 +109,8 @@ function initMap(responseData, lati, long) {
                 title: responseData[i].AddressInfo.Title,
                 animation: google.maps.Animation.DROP,
                 icon: {
-                    url: "assets/supercharger-icon.webp",
-                    scaledSize: new google.maps.Size(35, 35)
+                    url: markerPicture(), //"assets/supercharger-icon.webp",
+                    scaledSize: new google.maps.Size(40, 40)
                 }
             });
             //click markers to show infoWindow
@@ -108,6 +127,17 @@ function initMap(responseData, lati, long) {
                     + responseData[i].AddressInfo.Town + ", " + (responseData[i].AddressInfo.StateOrProvince || "") + " " + (responseData[i].AddressInfo.Postcode || "")
                     + '<div id="pad"></div>' + "<a id='info-window-link'href=" + link + "><span>View on Google Maps</span></a>"; //+ responseData[i].AddressInfo.Latitude + ',' + responseData[i].AddressInfo.Longitude + '><span>View on Google Maps</span></a>';
             }
+            function markerPicture() {
+                if (responseData[i].StatusTypeID == 150) {
+                    return 'assets/under-construction.png'
+                }
+                else if (responseData[i].Connections[0].ConnectionTypeID == 27) {
+                    return 'assets/supercharger-icon.webp';
+                }
+                else {
+                    return 'assets/regular-icon.png'
+                }
+            }
             //sleep delay for marker animation, closer to 0 increases speed
         }, i * 100);
     }
@@ -115,19 +145,11 @@ function initMap(responseData, lati, long) {
 document.querySelector(".side-panel-toggle").addEventListener("click", () => {
     document.querySelector(".wrapper").classList.toggle("side-panel-open");
 });
-//42.23928402279128, -82.54988032339418 UoWindsor
-//AIzaSyAE1HBf2OJrgDs0_Lfxe2QzP2tPKqvZiT4 map API
-//AIzaSyA054iiAhFsbUTfRgcA57Z95YG5ZfvORzQ geocode API
-
-
 // TODO:
 // missing supercharger poster
-// sidepanel with customizable parameters, non tesla charging stations, upcoming stations
 // better default google maps UI/hide them
 // google directions API map path to markers on click
 // google geolocation API, with mobile/browser gps
 
-//5f5b69d0-113f-4c47-96ac-6eaab1434864 randomly generated api key
 //https://api.openchargemap.io/v3/poi openchargemap API
-//a77d7dd0bf1ed194 map id
-//WinHacks2022, API learnign experience
+//created in 2 days for WinHacks2022
