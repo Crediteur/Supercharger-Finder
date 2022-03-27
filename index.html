@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Roboto:wght@100&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Find My Supercharger</title>
+</head>
+
+<body>
+
+    <div class="wrapper side-panel-open">
+        <div class="main">
+            <!-- main content -->
+            <h1 id="title">Find My Supercharger</h1>
+
+            <form class="search-form">
+                <input id="search-input" type="text" placeholder="Location" autocomplete="off" value="Toronto">
+                <input id="submit-button" type="submit" value="Search">
+            </form>
+
+            <div id="map"></div>
+
+        </div>
+        <button class="side-panel-toggle" type="button">
+            <span class="material-icons ">tune</span>
+            <span class="material-icons sp-icon-open sp-icon-close">tune</span>
+        </button>
+        <div class="side-panel">
+            <!-- side panel -->
+            <div>Max Results</div>
+            <input id="max-results-var" type="number" placeholder="1-500" autocomplete="off" value="60" min="1"
+                max="500">
+
+            <div>Max Distance</div>
+            <input id="max-distance-var" type="number" placeholder="1-500" autocomplete="off" value="80" min="1"
+                max="500">
+
+            <div>Filter Superchargers</div>
+            <label class="toggleSwitch nolabel" onclick="">
+                <input type="checkbox" checked />
+                <span>
+                    <span>OFF</span>
+                    <span>ON</span>
+                </span>
+                <a></a>
+            </label>
+
+            <div>Filter Superchargers</div>
+            <label class="toggleSwitch nolabel" onclick="">
+                <input type="checkbox" checked />
+                <span>
+                    <span>OFF</span>
+                    <span>ON</span>
+                </span>
+                <a></a>
+            </label>
+
+        </div>
+    </div>
+
+
+    <script src="script.js">//sidepanel testing
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE1HBf2OJrgDs0_Lfxe2QzP2tPKqvZiT4&map_ids=a77d7dd0bf1ed194&callback=initMap"></script>
+</body>
