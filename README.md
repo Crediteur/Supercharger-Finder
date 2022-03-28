@@ -1,5 +1,5 @@
 # Supercharger-Finder
-Uses Google maps to find nearby Tesla Superchargers. Uses Google Maps API and Open ChargeMapAPI. 
+Uses Google maps to find nearby Tesla Superchargers. Uses Google Maps API and OpenChargeMap API. 
 Works to find non Tesla-owned electric vehicle chargers as well.
 
 HTML, CSS, and Javascript. 
