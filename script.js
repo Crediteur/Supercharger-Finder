@@ -1,4 +1,4 @@
-const apikey = "5f5b69d0-113f-4c47-96ac-6eaab1434864"; //random unimportant string
+const salt = "5f5b69d0-113f-4c47-96ac-6eaab1434864"; //randomly generated unimportant string key
 let geocoder;
 let map;
 let lati = 42.2;
@@ -9,7 +9,7 @@ let connectionTypeId = '&connectiontypeid=27,';
 let statusTypeId = '';
 
 function apiURL(lati, long) {
-    return `https://api.openchargemap.io/v3/poi/?&output=json&maxresults=${maxResults}${connectionTypeId}&verbose=true&distance=${distance}&latitude=${lati}&longitude=${long}&key=${apikey}${statusTypeId}`;
+    return `https://api.openchargemap.io/v3/poi/?&output=json&maxresults=${maxResults}${connectionTypeId}&verbose=true&distance=${distance}&latitude=${lati}&longitude=${long}&key=${salt}${statusTypeId}`;
 }
 
 //fetch openchargemap data once latitde and longitude parameters are set
@@ -125,7 +125,7 @@ function initMap(responseData, lati, long) {
                 let link = "https://maps.google.com/?ll=" + responseData[i].AddressInfo.Latitude + "," + responseData[i].AddressInfo.Longitude;
                 return '<div id="info-window-title">' + responseData[i].AddressInfo.Title + '</div>' + '<div></div>' + responseData[i].AddressInfo.AddressLine1 + '<div></div>'
                     + responseData[i].AddressInfo.Town + ", " + (responseData[i].AddressInfo.StateOrProvince || "") + " " + (responseData[i].AddressInfo.Postcode || "")
-                    + '<div id="pad"></div>' + "<a id='info-window-link'href=" + link + "><span>View on Google Maps</span></a>"; //+ responseData[i].AddressInfo.Latitude + ',' + responseData[i].AddressInfo.Longitude + '><span>View on Google Maps</span></a>';
+                    + '<div id="pad"></div>' + "<a id='info-window-link'href=" + link + "><span>View on Google Maps</span></a>";
             }
             function markerPicture() {
                 if (responseData[i].StatusTypeID == 150) {

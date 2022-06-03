@@ -108,8 +108,11 @@ background:#3977d4;
 }
 .parameters{
   text-align:center;
-  padding-right:20px;
-  margin-top:20px;
+  padding-right:27px;
+  margin-top:10px;  
+}
+#menu-padding{
+  padding-top:50px;
 }
 /* -------------------switch------------------- */
 
@@ -316,7 +319,7 @@ color:#000000;
     position:relative;
     height:88vh;
     overflow:hidden;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 20px 5px 0px 50px;
     box-shadow: 5px 5px 8px rgba(156, 156, 156,0.85);
 }
