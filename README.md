@@ -1,10 +1,12 @@
-# Supercharger-Finder
-Uses Google maps to find nearby Tesla Superchargers. Uses Google Maps API and OpenChargeMap API. 
-Works to find non Tesla-owned electric vehicle chargers as well.
+## Supercharger-Finder
 
-HTML, CSS, and Javascript. 
+Map search application capable of locating of eletric vehicle charging stations.
 
+## Code
+Created using HTML, CSS, and Javascript. 
+Feeds Google geolocation data into the OpenChargeMap API to look for nearby ports. Then results are displayed as markers onto Google maps. 
 
-I fed the Google Map geocode into OpenChargeMap API and scrapped specific parameters.
-Typescript did not like the .google types used in Google APIs 
-Solo project completed in two days for [WinHacks 2022](https://devpost.com/software/tesla-supercharger-finder?ref_content=my-projects-tab&ref_feature=my_projects).
+## Preview
+![supercharger stations displayed as custom markers](showcase/stationBubble.png)
+
+Two day project created for [WinHacks 2022](https://devpost.com/software/tesla-supercharger-finder?ref_content=my-projects-tab&ref_feature=my_projects).
