@@ -3,7 +3,7 @@
 Map search application capable of locating of eletric vehicle charging stations.
 
 ## Code
-Created using HTML, CSS, and Javascript. 
+Written with HTML, CSS, and Javascript. 
 Feeds Google geolocation data into the OpenChargeMap API to look for nearby ports. Then results are displayed as markers onto Google maps. 
 
 ## Preview
